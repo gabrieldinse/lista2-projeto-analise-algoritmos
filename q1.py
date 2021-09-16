@@ -1,7 +1,6 @@
 from queue import Queue
 
 
-
 def get_N(E, v):
     N = []
     for e in E:
@@ -12,27 +11,26 @@ def get_N(E, v):
     return N
 
 
-def width_search(V, E, s):
-    C = {v:False for v in V}
+def min_paths(V, E, s):
     D = {v:999999999 for v in V}  # int em python não tem limite
     A = {v:None for v in V}
-    C[s] = True
     D[s] = 0
-    Q = Queue()
-    Q.put(s)
 
-    while not Q.empty():
-        u = Q.get()
-        for v in get_N(E, u):
-            if not C[v]:
-                C[v] = True
+    for i in range(len(V)):
+        for u, v in E:
+            # Usa-se as duas condições pois o
+            # grafo é não dirigido
+            if D[v] > D[u] + 1:
                 D[v] = D[u] + 1
                 A[v] = u
-                Q.put(v)
-    return D, A
+            if D[u] > D[v] + 1:
+                D[u] = D[v] + 1
+                A[u] = v
+    return A
+
 
 def min_path(C, L, cs, ct):
-    D, A = width_search(C, L, cs)
+    A = min_paths(C, L, cs)
     p = [ct]
     current = ct
     while A[current]:
