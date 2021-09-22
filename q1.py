@@ -1,14 +1,13 @@
 from queue import Queue
 
-
-def get_N(E, v):
-    N = []
-    for e in E:
-        if e[0] == v:
-            N.append(e[1])
-        elif e[1] == v:
-            N.append(e[0])
-    return N
+# def get_N(E, v):
+#     N = []
+#     for e in E:
+#         if e[0] == v:
+#             N.append(e[1])
+#         elif e[1] == v:
+#             N.append(e[0])
+#     return N
 
 
 def min_paths(V, E, s):

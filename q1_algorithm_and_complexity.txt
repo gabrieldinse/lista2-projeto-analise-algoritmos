@@ -1,0 +1,44 @@
+input: Um grafo G = (C, L, w({cs, ct})), um vértice de origem cs ∈ C
+e um vértice de destino ct ∈ C
+
+min_paths(V, E, s):
+// inicialização
+Dv ← ∞ ∀ v ∈ V
+Av ← null ∀ v ∈ V
+Ds ← 0
+    for i ← 1 to |V| − 1 do
+        foreach (u, v) ∈ E do
+            // relaxamento
+            if Dv > Du + 1 then
+                Dv ← Du + 1
+                Av ← u
+            if Du > Dv + 1 then
+                Du ← Du + 1
+                Av ← u
+    return A
+
+min_path(C, L, cs, ct):
+// inicialização
+A ← min_paths(C, L, cs)
+p ← [ct]
+current ← ct
+
+    while A[current] não formar uma árvore geradora do
+        current ← A[current]
+        p ← A[current]
+    return p
+
+f ← min_path(['a', 'b', 'c', 'd', 'e', 'f', 'g'],
+             [('a', 'c'), ('b', 'd'), ('c', 'f'), ('d', 'e'), ('d', 'f'), ('d', 'g')],
+             'a', 'g')
+print(f)
+
+Complexidade: Inicialmente a complexidade computacional em tempo computacional é
+muito semelhante ao algorítmo de Bellman-Ford, observando as primeiras instruções,
+têm-se a inicialização que demanda Θ(|V|) pois as estruturas são inicializadas para cada
+vértice. A partir do primeiro conjunto de laços de repetição, há o laço mais externo que
+repete |V|−1 vezes. Para cada repetição desse laço, passa-se por cada aresta em E, logo
+esse primeiro conjunto de laços dita (|V|−1)|E| execuções da comparação nas linhas 23 e 26.
+Na linha 26 encontra-se uma árvore geradora, faz ao máximo |E|
+verificações da comparação na linha 10. Então, o algoritmo proposto
+é executado no tempo computacional de O(|V||E|).
