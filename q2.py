@@ -1,9 +1,6 @@
 def cost(u, v, w, p, k):
     return w[(u, v)] * k + p[v]
 
-    def ad_pedagio(self, u, v, peso):
-        self.grafo[u-1][v-1] = peso
-        self.grafo[v-1][u-1] = peso
 
 def dijisktra(V, E, c, s):
     D = {v:999999999 for v in V}  # int em python não tem limite
