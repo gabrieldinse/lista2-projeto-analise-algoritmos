@@ -1,0 +1,73 @@
+input: Um grafo dirigido e ponderado G = (V, A, w), Em "G", "V" e um conjunto de localidades, "A" o conjunto
+de arcos e "w" a funcao de distancia de um arco em km. A funcao "p" o valor cobrado de pedagio em reais
+em passar por uma localidade. Deseja-se desenvolver um algoritmo que receba um grafo G, uma funcao "p",
+um vertice de origem "s" ∈ "V", um vertice de destino "t" ∈ "V", preco do combustivel, a autonomia em
+km por litro e retorne a rota de menor custo considerando o valor gasto em viagem.
+
+cost(u, v, w, p, k, c):
+return (w[(u, v)] / k) * c + p[v]
+
+dijisktra(V, E, w, p, k, c, s):
+    Dv ← ∞ ∀ v ∈ V
+    Av ← null ∀ v ∈ V
+    Cv ← False ∀ v ∈ V
+    Ds ← 0
+    while not all_visited(C) do
+        u ← arg_min(D, C)
+        C[u] ← True
+        for v ← get_N(E, u, C) do
+            c_aux ← cost(u, v, w, p, k, c)
+            if D[v] > D[u] + c_aux do
+                D[v] ← D[u] + c_aux
+                A[v] ← u
+    return D, A
+
+arg_min(D, C):
+    min_val ← ∞ ∀ v ∈ V
+    min_arg ← null ∀ v ∈ V
+    for v, d ← D.items() do
+        if d < min_val and not C[v] do
+            min_val ← d
+            min_arg ← v
+    return min_arg
+
+all_visited(C):
+    for visited ← C do
+        if not visited do
+            return False
+    return True
+
+
+get_N(E, v, C):
+    N ← []
+    for e ← E do
+        if e[0] == v and not C[e[1]] do
+            N ← e[1]
+    return N
+
+
+cheaper_path(V, E, w, p, k, c, s, t) do
+    D, A ← dijisktra(V, E, w, p, k, c, s)
+    path ← [t]
+    current ← t
+    while A[current]  não formar uma árvore geradora do
+        current = A[current]
+        p ← A[current]
+    return path
+
+V = ['a', 'b', 'c', 'd', 'e', 'f']
+E = [('a', 'c'), ('c', 'f'), ('a', 'b'), ('b', 'd'), ('d', 'f'), ('a', 'f'), ('e', 'b')]
+w = {('a', 'c'):3, ('c', 'f'):3, ('a', 'b'):1, ('b', 'd'):1, ('d', 'f'):1, ('a', 'f'):10, ('e', 'b'):2}
+p = {'a':1.5, 'b':3, 'c':5, 'd':2, 'e':10, 'f':4}
+k = 10
+c = 5
+s = 'a'
+t = 'f'
+
+f = cheaper_path(V, E, w, p, k, c, s, t)
+print(f'path: {f}')
+
+
+Porque: Quando têm-se a rota de menor custo considerando o valor gasto em viagem, o algoritmo
+proposto pára porque é analizado a rota de menor distância pelo algoritmo de dijisktra e também
+se por esta rota ao somar o pedágio ela vale a pena pela utlizando função cost.
