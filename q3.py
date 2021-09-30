@@ -25,6 +25,14 @@ G = [None, 'g1', 'g2', 'g3', 'g4', 'g5', 'g6', 'g7', 'g8', 'g9', 'g10'] #G: Conj
 w = [None, 11500, 1300, 750, 111650, 1250, 11200, 1800, 1400, 1100, 1550]            #w: Peso dos intens em kg.
 v = [None, 3000, 1500, 400, 5000, 10000, 200, 300, 2000, 4100, 6100]    #w: Lucro na entrega em reais de cada item.
 
+
+print('Lista de itens:')
+for g, val, weight in zip(G[1:], v[1:], w[1:]):
+    print(f'{g} - valor: {val}, peso: {weight}')
+print('\nLista de caminhões:')
+for t, c in zip(T, C):
+    print(f'{t} - capacidade: {c}')
+
 for c in C:
     items = caminhao(v, w, c)
     for item in items:
@@ -32,5 +40,5 @@ for c in C:
         v.pop(item)
         w.pop(item)
 
-print(f'Itens não entregues: {G[1:]}')
+print(f'\nItens não entregues: {G[1:]}')
 print(f'Valor não entregue: {sum(v[1:])}')
