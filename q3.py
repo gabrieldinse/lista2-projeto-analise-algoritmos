@@ -17,13 +17,11 @@ def caminhao(v, w, C):
            remaining_w -= w[i]
     return items
 
-   # return M[(N,C)]
-
-T = ['t1', 't2', 't3']                                            #T: Conjunto de caminhões.
-C = [2000, 4000, 3000]                                            #t: Capacidade de carga dos caminhões em kg
-G = [None, 'g1', 'g2', 'g3', 'g4', 'g5', 'g6', 'g7', 'g8', 'g9', 'g10'] #G: Conjunto de itens.
-w = [None, 11500, 1300, 750, 111650, 1250, 11200, 1800, 1400, 1100, 1550]            #w: Peso dos intens em kg.
-v = [None, 3000, 1500, 400, 5000, 10000, 200, 300, 2000, 4100, 6100]    #w: Lucro na entrega em reais de cada item.
+T = ['t1', 't2', 't3']                                                      #T: Conjunto de caminhões.
+C = [2000, 4000, 3000]                                                      #t: Capacidade de carga dos caminhões em kg
+G = [None, 'g1', 'g2', 'g3', 'g4', 'g5', 'g6', 'g7', 'g8', 'g9', 'g10']     #G: Conjunto de itens.
+w = [None, 11500, 1300, 750, 111650, 1250, 11200, 1800, 1400, 1100, 1550]   #w: Peso dos intens em kg.
+v = [None, 3000, 1500, 400, 5000, 10000, 200, 300, 2000, 4100, 6100]        #v: Lucro na entrega em reais de cada item.
 
 
 print('Lista de itens:')
